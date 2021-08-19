@@ -7,3 +7,8 @@ while True:
 	products.append([name, price])
 for p in products:
 	print(p[0], '的價格是', p[1])
+print('已儲存檔案')
+with open('expenses.csv', 'w') as f:
+	f.write('名稱' + ',' + '價格' + '\n')
+	for p in products:
+		f.write(p[0] + ',' + p[1] + '\n')
