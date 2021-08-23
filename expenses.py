@@ -1,6 +1,4 @@
-import os
 products = []
-
 # 檔案名稱
 def file_n():
     file_n = input("File name: ")
@@ -47,18 +45,18 @@ def main():
     while True:
         work = input('Create/Open a file:')
         if work == "create":
-            file_n = file_n()
-            create_file(file_n)
-            products = user_input(products)
-            write_file(file_n, products)
+            new_file_n = file_n()
+            create_file(new_file_n)
+            new_products = user_input(products)
+            write_file(new_file_n, new_products)
             break
         elif work == "open":
             while True:
-                n = file_n()
-                if os.path.isfile(n):
-                    read_file(n)
-                    products = user_input(products)
-                    write_file(n, products)
+                old_file_n = file_n()
+                if os.path.isfile(old_file_n):
+                    read_file(old_file_n)
+                    new_products = user_input(products)
+                    write_file(old_file_n, new_products)
                     break       
                 else:
                     print("Can't find the file. Or please delete the file extension.")
