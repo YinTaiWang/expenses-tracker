@@ -1,12 +1,12 @@
-products = []
 # 檔案名稱
-def file_n():
-    file_n = input("File name: ")
-    file_n = file_n + ".csv"
-    return file_n
+def file_name():
+    file_name = input("File name: ")
+    file_name = f'{file_name}.csv'
+    return file_name
 
 # 讀取檔案
 def read_file(filename):
+    products = []
     with open(filename, "r") as f:
         for line in f:
             if "My Expenses Tracker" or "Products" and "Price" in line:
@@ -42,21 +42,22 @@ def write_file(filename, products):
 
 def main():
     import os
+    products = []
     while True:
         work = input('Create/Open a file:')
         if work == "create":
-            new_file_n = file_n()
-            create_file(new_file_n)
+            new_file_name = file_name()
+            create_file(new_file_name)
             new_products = user_input(products)
-            write_file(new_file_n, new_products)
+            write_file(new_file_name, new_products)
             break
         elif work == "open":
             while True:
-                old_file_n = file_n()
-                if os.path.isfile(old_file_n):
-                    read_file(old_file_n)
+                old_file_name = file_name()
+                if os.path.isfile(old_file_name):
+                    read_file(old_file_name)
                     new_products = user_input(products)
-                    write_file(old_file_n, new_products)
+                    write_file(old_file_name, new_products)
                     break       
                 else:
                     print("Can't find the file. Or please delete the file extension.")
